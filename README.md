@@ -1,4 +1,4 @@
-# ng-conf NgRx Workshop 2020
+# NgRx Workshop 2020
 
 ## Setup
 
