@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { BookModel } from "src/app/shared/models";
 
 @Component({
@@ -26,7 +26,7 @@ export class BookDetailComponent {
       this.bookForm.setValue({
         name: book.name,
         earnings: book.earnings,
-        description: book.description,
+        description: book.description!,
       });
 
       this.originalBook = book;

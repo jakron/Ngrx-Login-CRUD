@@ -26,7 +26,7 @@ export class MovieDetailComponent {
       this.movieForm.setValue({
         name: movie.name,
         earnings: movie.earnings,
-        description: movie.description,
+        description: movie.description!,
       });
 
       this.originalMovie = movie;
