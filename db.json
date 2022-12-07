@@ -1,0 +1,56 @@
+{
+  "music": [
+    {
+      "id": "1",
+      "name": "Interstellar",
+      "description": "Space",
+      "earnings": 25000000
+    },
+    {
+      "id": "2",
+      "name": "Inception",
+      "description": "I forgot",
+      "earnings": 50000000
+    }
+  ],
+  "movies": [
+    {
+      "id": "1",
+      "name": "Interstellar",
+      "description": "Space",
+      "earnings": 25000000
+    },
+    {
+      "id": "2",
+      "name": "Inception",
+      "description": "I forgot",
+      "earnings": 50000000
+    },
+    {
+      "id": "574955f4-8ab4-465f-9bf2-f9028019291a",
+      "name": "jak",
+      "earnings": "22",
+      "description": null
+    }
+  ],
+  "books": [
+    {
+      "id": "5538704c-c594-4405-87bf-df5ce7eec3e2",
+      "name": "Mike's Second Test",
+      "earnings": "6546542",
+      "description": null
+    },
+    {
+      "id": "27fc541a-0e2e-4e97-89f6-b98fc0e721af",
+      "name": "wert",
+      "earnings": "32131",
+      "description": "ddd"
+    },
+    {
+      "id": "6571cb27-c2fd-408e-a7fc-9af4a4b1cc53",
+      "name": "4/5/2022, 12:00 AM",
+      "earnings": "321",
+      "description": "1"
+    }
+  ]
+}

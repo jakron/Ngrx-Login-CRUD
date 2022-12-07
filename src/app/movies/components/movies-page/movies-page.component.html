@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="col-50">
+    <!--        <app-books-total [total]="total$ | async"> </app-books-total>-->
+
+    <app-movies-list
+      [movies]="movies$ | async"
+      (select)="onSelect($event)"
+      (delete)="onDelete($event)"
+    >
+    </app-movies-list>
+  </div>
+
+  <app-movie-detail
+    class="col-50"
+    [movie]="currentMovie$ | async"
+    (save)="onSave($event)"
+    (cancel)="onCancel()"
+  >
+  </app-movie-detail>
+</div>
