@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 export interface LoginEvent {
   username: string;
@@ -16,14 +16,11 @@ export class LoginFormComponent {
   @Input() error: string | null = null;
 
   formGroup = new FormGroup({
-    username: new FormControl(""),
-    password: new FormControl(""),
+    username: new FormControl("", [Validators.required]),
+    password: new FormControl("", [Validators.required]),
   });
 
-  onSubmit() {
-    const { username, password } = this.formGroup?.value;
-    if (username !== null && username !== undefined && password !== null && password !== undefined) {
-      this.login.emit({ username, password });
-    }
+  onSubmit(login: LoginEvent) {
+    this.login.emit(login);
   }
 }

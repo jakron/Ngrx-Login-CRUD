@@ -1,30 +1,46 @@
 import { Injectable } from "@angular/core";
-import { createEffect, Actions, ofType } from "@ngrx/effects";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
-import { map, concatMap, catchError, tap } from "rxjs/operators";
+import { catchError, concatMap, map, tap } from "rxjs/operators";
 import { AuthService } from "../shared/services";
 import { AuthApiActions, AuthUserActions } from "./actions";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private auth: AuthService) {}
+  constructor(
+    private actions$: Actions,
+    private router: Router,
+    private auth: AuthService
+  ) {}
 
   getAuthStatus$ = createEffect(() =>
     this.auth
       .getStatus()
-      .pipe(map(userOrNull => AuthApiActions.getAuthStatusSuccess(userOrNull)))
+      .pipe(
+        map((userOrNull) => AuthApiActions.getAuthStatusSuccess(userOrNull))
+      )
   );
 
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthUserActions.login),
-      concatMap(action => {
+      concatMap((action) => {
         return this.auth.login(action.username, action.password).pipe(
-          map(user => AuthApiActions.loginSuccess(user)),
-          catchError(reason => of(AuthApiActions.loginFailure(reason)))
+          map((user) => AuthApiActions.loginSuccess(user)),
+          catchError((reason) => of(AuthApiActions.loginFailure(reason)))
         );
       })
     )
+  );
+
+  redirectAfterSubmit$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthUserActions.login),
+        tap(() => this.router.navigateByUrl("/"))
+      ),
+    { dispatch: false }
   );
 
   logout$ = createEffect(
